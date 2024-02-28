@@ -1,0 +1,19 @@
+version: '3'
+
+networks:
+  rna:
+    ipam:
+      config:
+        - subnet: 10.5.190.0/24
+
+services:
+  rna:
+    image: 'reactnativecommunity/react-native-android'
+    container_name: react-native-android
+    volumes:
+      - ./:/home/app
+    working_dir: /home/app
+    command: bash -c "tail -f /dev/null"
+    networks:
+      rna:
+        ipv4_address: 10.5.190.11
